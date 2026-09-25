@@ -37,7 +37,11 @@ export async function POST(request: Request) {
     );
     loginUrl.searchParams.set("token", token);
     if (parsed.data.next) loginUrl.searchParams.set("next", parsed.data.next);
-    await sendCustomerPortalLoginEmail(email, loginUrl.toString());
+    try {
+      await sendCustomerPortalLoginEmail(email, loginUrl.toString());
+    } catch (emailError) {
+      console.error("Failed to send customer portal login email", emailError);
+    }
   }
   return Response.json({
     ok: true,

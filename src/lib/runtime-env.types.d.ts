@@ -5,12 +5,7 @@ export type RuntimeEnvironmentKey =
   | "EMAIL_FROM"
   | "EMAIL_REPLY_TO"
   | "GITHUB_CLIENT_ID"
-  | "GITHUB_CLIENT_SECRET"
-  | "SMTP_HOST"
-  | "SMTP_PORT"
-  | "SMTP_USER"
-  | "SMTP_PASS"
-  | "SMTP_SECURE";
+  | "GITHUB_CLIENT_SECRET";
 
 export type RuntimeEnvironment = Record<
   RuntimeEnvironmentKey,

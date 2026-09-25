@@ -24,12 +24,11 @@
 		// see https://opennext.js.org/cloudflare/howtos/image
 		"binding": "IMAGES"
 	},
-	// "send_email": [
-	// 	{
-	// 		"name": "EMAIL",
-	// 		"remote": true
-	// 	}
-	// ],
+	"send_email": [
+		{
+			"name": "EMAIL"
+		}
+	],
 	"services": [
 		{
 			// Self-reference service binding, the service name must match the worker name

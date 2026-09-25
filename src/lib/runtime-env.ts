@@ -14,12 +14,7 @@ const runtimeEnvironmentKeys: RuntimeEnvironmentKey[] = [
   "EMAIL_FROM",
   "EMAIL_REPLY_TO",
   "GITHUB_CLIENT_ID",
-  "GITHUB_CLIENT_SECRET",
-  "SMTP_HOST",
-  "SMTP_PORT",
-  "SMTP_USER",
-  "SMTP_PASS",
-  "SMTP_SECURE",
+  "GITHUB_CLIENT_SECRET"
 ];
 
 export async function getRuntimeConfiguration(): Promise<RuntimeConfiguration> {
@@ -49,11 +44,7 @@ export async function getRuntimeConfiguration(): Promise<RuntimeConfiguration> {
     values,
     bindings: {
       database: Boolean(cloudflareEnvironment.DB),
-      email: Boolean(
-        cloudflareEnvironment.EMAIL ||
-          process.env.SMTP_HOST ||
-          cloudflareEnvironment.SMTP_HOST
-      ),
+      email: Boolean(cloudflareEnvironment.EMAIL),
       storage: Boolean(cloudflareEnvironment.PRODUCT_FILES),
     },
   };
