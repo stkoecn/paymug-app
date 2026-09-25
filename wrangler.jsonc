@@ -51,12 +51,16 @@
 	"d1_databases": [
 		{
 			"binding": "DB",
-			"migrations_dir": "drizzle"
+			"migrations_dir": "drizzle",
+			"database_id": "f33d35e5-22d0-486a-8c97-7c539c9cf704",
+			"database_name": "paymug-app"
 		}
 	],
 	"r2_buckets": [
 		{
-			"binding": "PRODUCT_FILES"
+			"binding": "PRODUCT_FILES",
+			"bucket_name": "paymug-app",
+			"preview_bucket_name": "paymug-app"
 		}
 	],
 	"triggers": {
