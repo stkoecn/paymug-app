@@ -50,6 +50,7 @@ next-env.d.ts
 
 /design
 .gito
+.agent-teams/
 
 .vscode
 wrangler.local.jsonc

@@ -235,6 +235,13 @@ export async function deactivateAppLicense(): Promise<AppLicenseStatus> {
 }
 
 export async function hasProFeature(feature: ProFeature): Promise<boolean> {
+  if (
+    feature === "pages" ||
+    feature === "email_campaigns" ||
+    feature === "automations"
+  ) {
+    return true;
+  }
   const license = await getAppLicenseStatus();
   return license.pro && license.features.includes(feature);
 }

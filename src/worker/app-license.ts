@@ -5,6 +5,13 @@ export async function workerHasProFeature(
   feature: string,
   now = new Date(),
 ): Promise<boolean> {
+  if (
+    feature === "pages" ||
+    feature === "email_campaigns" ||
+    feature === "automations"
+  ) {
+    return true;
+  }
   const row = await database
     .prepare(
       "SELECT status, features, expires_at, last_validated_at FROM app_licenses WHERE id = 'paymug-pro' LIMIT 1",

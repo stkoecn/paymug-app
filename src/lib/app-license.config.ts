@@ -26,10 +26,7 @@ export const proDashboardPaths: Array<{
   prefix: string;
   feature: ProFeature;
 }> = [
-  { prefix: "/dashboard/email/campaigns", feature: "email_campaigns" },
-  { prefix: "/dashboard/automations", feature: "automations" },
   { prefix: "/dashboard/affiliates", feature: "affiliates" },
-  { prefix: "/dashboard/pages", feature: "pages" },
   { prefix: "/dashboard/stores", feature: "multi_store" },
   { prefix: "/dashboard/settings/github", feature: "private_github" },
 ];
