@@ -14,7 +14,8 @@ const runtimeEnvironmentKeys: RuntimeEnvironmentKey[] = [
   "EMAIL_FROM",
   "EMAIL_REPLY_TO",
   "GITHUB_CLIENT_ID",
-  "GITHUB_CLIENT_SECRET"
+  "GITHUB_CLIENT_SECRET",
+  "RESEND_API_KEY",
 ];
 
 export async function getRuntimeConfiguration(): Promise<RuntimeConfiguration> {
@@ -44,7 +45,11 @@ export async function getRuntimeConfiguration(): Promise<RuntimeConfiguration> {
     values,
     bindings: {
       database: Boolean(cloudflareEnvironment.DB),
-      email: Boolean(cloudflareEnvironment.EMAIL),
+      email: Boolean(
+        cloudflareEnvironment.EMAIL ||
+          process.env.RESEND_API_KEY ||
+          cloudflareEnvironment.RESEND_API_KEY
+      ),
       storage: Boolean(cloudflareEnvironment.PRODUCT_FILES),
     },
   };
