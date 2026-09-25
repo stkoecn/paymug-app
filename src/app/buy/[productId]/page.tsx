@@ -131,7 +131,7 @@ export default async function BuyPage({ params, searchParams }: BuyPageProps) {
     : undefined;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       <VisitorAnalyticsTracker
         storeId={store.id}
         enabled={store.analyticsEnabled && !isSandbox && !isPreview}
@@ -143,13 +143,13 @@ export default async function BuyPage({ params, searchParams }: BuyPageProps) {
       )}
       {isSandbox && <StoreTestModeRibbon />}
 
-      <main className="mx-auto flex lg:flex-row max-w-5xl px-4 pb-10 pt-5 gap-8 lg:gap-14">
-        <div className="flex flex-col gap-6 flex-1 min-h-0 min-w-0 lg:sticky lg:top-6">
+      <main className="mx-auto flex flex-col lg:flex-row max-w-5xl px-4 sm:px-6 pb-12 pt-4 sm:pt-6 gap-8 lg:gap-14">
+        <div className="flex flex-col gap-6 flex-1 min-h-0 min-w-0">
           <div className="flex-1">
-            <header className="mx-auto flex w-full max-w-5xl items-center justify-between pb-4 mb-4 border-b border-border">
+            <header className="mx-auto flex w-full items-center justify-between pb-4 mb-4 border-b border-border">
               <div className="flex h-8 items-center">
                 <Link
-                  className="flex flex-row items-end gap-2"
+                  className="flex flex-row items-center gap-2 text-sm font-medium text-foreground hover:opacity-80 transition"
                   href={`/s/${store.slug}`}
                   aria-label={`${store.name} store`}
                 >
@@ -160,14 +160,14 @@ export default async function BuyPage({ params, searchParams }: BuyPageProps) {
                       className="h-6 w-6 rounded-lg object-cover"
                     />
                   )}
-                  {store.name}
+                  <span>{store.name}</span>
                 </Link>
               </div>
             </header>
 
-            <div className="mb-6 flex items-start justify-between gap-6">
+            <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
               <div className="min-w-0">
-                <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                   {product.name}
                 </h1>
                 {store.displayPurchasesEnabled && product.purchaseCount > 0 ? (
@@ -176,9 +176,9 @@ export default async function BuyPage({ params, searchParams }: BuyPageProps) {
                   </p>
                 ) : null}
               </div>
-              <div className="shrink-0 text-right">
-                <div className="flex items-center justify-end gap-2">
-                  <p className="text-2xl font-bold sm:text-3xl">
+              <div className="shrink-0 sm:text-right">
+                <div className="flex items-baseline sm:justify-end gap-2">
+                  <p className="text-2xl font-bold text-foreground sm:text-3xl">
                     {formatProductPageMoney(checkoutPrice, product.currency)}
                     {priceSuffix}
                   </p>
@@ -187,7 +187,7 @@ export default async function BuyPage({ params, searchParams }: BuyPageProps) {
                   )}
                 </div>
                 {perpetualUpdateSummary ? (
-                  <p className="mt-1 max-w-56 text-xs leading-5 text-muted">
+                  <p className="mt-1 text-xs leading-5 text-muted sm:max-w-56">
                     {perpetualUpdateSummary}
                   </p>
                 ) : billingSummary ? (
@@ -217,7 +217,7 @@ export default async function BuyPage({ params, searchParams }: BuyPageProps) {
               <img
                 src={product.imageUrl}
                 alt={product.name}
-                className="aspect-video w-full object-cover rounded-xl mb-6"
+                className="aspect-video w-full object-cover rounded-xl mb-6 shadow-xs"
               />
             )}
             {product.description && (
@@ -228,17 +228,19 @@ export default async function BuyPage({ params, searchParams }: BuyPageProps) {
             )}
           </div>
 
-          <Powered />
+          <div className="hidden lg:block">
+            <Powered />
+          </div>
         </div>
 
-        <div className="w-86">
-          <div className={`${cardClass} sticky top-6 overflow-hidden`}>
+        <div className="w-full lg:w-86 lg:shrink-0">
+          <div className={`${cardClass} lg:sticky lg:top-6 overflow-hidden`}>
             {/* <h2 className="font-semibold px-6 py-3 border-b border-border">
               Checkout
             </h2> */}
 
             {cancelled && (
-              <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900">
+              <p className="m-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900 border border-amber-200">
                 Payment was cancelled. You can try again below.
               </p>
             )}
@@ -268,6 +270,9 @@ export default async function BuyPage({ params, searchParams }: BuyPageProps) {
               billingSummary={billingSummary}
               priceSuffix={priceSuffix}
             />
+          </div>
+          <div className="mt-6 flex justify-center lg:hidden">
+            <Powered />
           </div>
         </div>
       </main>

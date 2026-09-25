@@ -337,7 +337,7 @@ export function CheckoutClient({
 
   return (
     <div className="divide-y divide-border">
-      <section className="space-y-4 p-6">
+      <section className="space-y-4 p-4 sm:p-6">
         <Input
           label="Email"
           type="email"
@@ -471,7 +471,7 @@ export function CheckoutClient({
           )}
       </section>
 
-      <section className="space-y-3 p-6">
+      <section className="space-y-3 p-4 sm:p-6">
 
         {customAmountEnabled && (
           <div className="space-y-1 pb-2">

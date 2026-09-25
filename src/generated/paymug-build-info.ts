@@ -1,3 +1,3 @@
 export const paymugBuildInfo = {
-  "repository": "Paymug/paymug"
+  "repository": "stkoecn/paymug-app"
 } as const;

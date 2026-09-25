@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
 	turbopack: {
 		root: process.cwd(),
 	},
-	allowedDevOrigins: ['paymug.dev'],
+	allowedDevOrigins: ['paymug.dev', 'localhost', '127.0.0.1'],
 	async redirects() {
 		return [
 			{
